@@ -1,13 +1,6 @@
-<mvc:View
-   controllerName="ui5.walkthrough.controller.Header"
-   xmlns="sap.m"
-   xmlns:mvc="sap.ui.core.mvc">
-   <Button
-      text="Header"
-      press=".onShowHello"/>
-   <Input
-      value="{/baseEntity/name}"
-      description="Hello {/baseEntity/name}"
-      valueLiveUpdate="true"
-      width="60%"/>
+<mvc:View controllerName="ui5.walkthrough.controller.Header"
+          xmlns="sap.m"
+          xmlns:mvc="sap.ui.core.mvc">
+    <Button text="{i18n>showHelloButtonText}"
+            press=".onShowHello" />
 </mvc:View>
