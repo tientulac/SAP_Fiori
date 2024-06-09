@@ -1,0 +1,10 @@
+<core:FragmentDefinition xmlns="sap.m"
+                         xmlns:core="sap.ui.core">
+    <Dialog id="helloDialog" class="successDialog"
+            title="Hello {/baseEntity/name}">
+        <beginButton>
+            <Button text="{i18n>dialogCloseButtonText}"
+                    press=".onCloseDialog" />
+        </beginButton>
+    </Dialog>
+</core:FragmentDefinition>

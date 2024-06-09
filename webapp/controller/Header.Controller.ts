@@ -14,6 +14,8 @@ export default class HeaderController extends Controller {
     onInit(): void {
 
     }
-    onShowHello(): void {
+    onShowHeader(): void {
+        const baseEntity = (<JSONModel>this.getView()?.getModel())?.getProperty("/baseEntity");
+        MessageToast.show(`name: ${baseEntity.name} - age: ${baseEntity.age}`);
     }
 };
