@@ -1,7 +1,26 @@
 <core:FragmentDefinition xmlns="sap.m"
                          xmlns:core="sap.ui.core">
-    <Dialog id="helloDialog" class="successDialog"
+    <Dialog id="helloDialog"
+            class="successDialog"
             title="Hello {/baseEntity/name}">
+        <content class="content-modal">
+            <core:Icon src="sap-icon://hello-world"
+                       class="sapUiMediumMargin" />
+            <Text text="conten modal" />
+            <Link text="facebook"
+                  href="#" />
+            <mvc:View xmlns="sap.m"
+                      xmlns:mvc="sap.ui.core.mvc">
+                <List headerText="{i18n>invoiceListTitle}"
+                      class="sapUiResponsiveMargin"
+                      width="auto"
+                      items="{invoice>/Invoices}">
+                    <items>
+                        <ObjectListItem title="{invoice>Quantity} x {invoice>ProductName}" />
+                    </items>
+                </List>
+            </mvc:View>
+        </content>
         <beginButton>
             <Button text="{i18n>dialogCloseButtonText}"
                     press=".onCloseDialog" />

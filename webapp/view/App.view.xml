@@ -10,6 +10,7 @@
                     <content>
                         <mvc:XMLView viewName="ui5.walkthrough.view.Panel" />
                     </content>
+                    <mvc:XMLView viewName="ui5.walkthrough.view.InvoiceList" />
                 </Page>
             </pages>
         </App>

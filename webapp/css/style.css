@@ -19,3 +19,7 @@
 .successDialog {
     width: 1000px;
 }
+
+.content-modal {
+    display: inline-block;
+}
