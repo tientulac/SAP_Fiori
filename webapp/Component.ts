@@ -16,7 +16,7 @@ export default class Component extends UIComponent {
     public static metadata = {
         "interfaces": ["sap.ui.core.IAsyncContentCreation"],
         "manifest": "json"
-    };   
+    };
 
     init(): void {
         // call the init function of the parent
@@ -28,6 +28,8 @@ export default class Component extends UIComponent {
         this.setModel(i18nModel, "i18n");
         this.baseEntity = new BaseEntity(1, 'Test', 2000);
         this.setModel(new JSONModel({ baseEntity: this.baseEntity }));
+        // create the views based on the url/hash
+        this.getRouter().initialize();
     };
 
     createContent(): Control | Promise<Control | null> | null {

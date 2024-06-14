@@ -23,3 +23,10 @@
 .content-modal {
     display: inline-block;
 }
+
+.action {
+    display: flex;
+    flex-direction: row; 
+    align-items: center;
+    padding-right: 5px;
+}

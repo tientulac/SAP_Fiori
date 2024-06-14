@@ -4,6 +4,7 @@ import JSONModel from "sap/ui/model/json/JSONModel";
 import ResourceBundle from "sap/base/i18n/ResourceBundle";
 import ResourceModel from "sap/ui/model/resource/ResourceModel";
 import MessageToast from "sap/m/MessageToast";
+import Component from "../Component";
 
 /**
  * @name ui5.walkthrough.controller.Header
@@ -17,5 +18,12 @@ export default class HeaderController extends Controller {
     onShowHeader(): void {
         const baseEntity = (<JSONModel>this.getView()?.getModel())?.getProperty("/baseEntity");
         MessageToast.show(`name: ${baseEntity.name} - age: ${baseEntity.age}`);
+    }
+
+    goToDetail(): void {
+        const router = (<Component>this.getOwnerComponent()).getRouter();
+        router.navTo("detail", {
+            invoicePath: 'paramURL'
+        });
     }
 };

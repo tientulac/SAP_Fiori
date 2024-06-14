@@ -39,6 +39,6 @@ export default class PanelController extends Controller {
     }
 
     onCloseDialog(): void {
-        (<Dialog>this.byId("helloDialog"))?.close();
+        (<Dialog>this.byId("successDialog"))?.close();
     }
 };
