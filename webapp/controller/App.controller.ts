@@ -58,10 +58,10 @@ export default class AppController extends Controller {
         (<Dialog>this.byId("editInvoiceDialog"))?.close();
     }
 
-    onPress(event: Event): void {
+    onPressRow(event: Event): void {
         const item = <ObjectListItem>event.getSource();
         const router = (<Component>this.getOwnerComponent()).getRouter();
-        const param = window.encodeURIComponent(item?.getBindingContext("invoice")?.getPath().substr(1) ?? '');
+        const param = window.encodeURIComponent(item?.getBindingContext("invoiceModel")?.getPath().substr(1) ?? '');
         router.navTo("detail", {
             invoicePath: param
         });

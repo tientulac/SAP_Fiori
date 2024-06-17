@@ -8,9 +8,9 @@
         class="sapUiResponsiveMargin"
         width="auto"
         items="{
-            path : 'invoice>/Invoices',
+            path : 'invoiceModel>/Invoices',
             sorter : {
-               path : 'ProductName' 
+               path : 'Quantity' 
             }
          }">
         <headerToolbar>
@@ -35,60 +35,76 @@
                 <ToggleButton id="_IDGenToggleButton1" icon="sap-icon://menu" tooltip="Enable Custom Context Menu" press="onToggleContextMenu" />
             </OverflowToolbar>
         </headerToolbar>
-        <columns>
-            <Column>
-                <Text text="Product Name" />
-            </Column>
-            <Column>
-                <Text text="Shipper Name" />
-            </Column>
-            <Column>
-                <Text text="ExtendedPrice" />
-            </Column>
-            <Column>
-                <Text text="Status" />
-            </Column>
-            <Column>
-                <Text text="Action" />
-            </Column>
-        </columns>
+       <columns>
+			<Column
+				hAlign="End"
+				minScreenWidth="Small"
+				demandPopin="true"
+				width="5em">
+				<Text text="{i18n>columnQuantity}" />
+			</Column>
+			<Column>
+				<Text text="{i18n>columnName}" />
+			</Column>
+			<Column
+				minScreenWidth="Small"
+				demandPopin="true">
+				<Text text="{i18n>columnStatus}" />
+			</Column>
+			<Column
+				minScreenWidth="Tablet"
+				demandPopin="false">
+				<Text text="{i18n>columnSupplier}" />
+			</Column>
+			<Column>
+				<Text text="{i18n>columnPrice}" />
+			</Column>
+            <Column >
+				<Text text="Action" />
+			</Column>
+		</columns>
         <items>
-            <ColumnListItem vAlign="Middle" press="onPress" type="Navigation">
-                <cells>
-                    <Text
-                    text="{invoice>ProductName}" />
-                    <Text
-                    text="{invoice>ShipperName}" />
-                    <ObjectNumber
-                        number="{
-                            parts: [
-                                'invoice>ExtendedPrice',
-                                'view>/currency'
-                            ],
-                            type: 'sap.ui.model.type.Currency',
-                            formatOptions: {
-                                showMeasure: false
-                            }
-                        }"
-                        numberUnit="{view>/currency}"
-                        state="{= ${invoice>ExtendedPrice} > 50 ? 'Error' : 'Success' }"
-                    />
-                    <ObjectStatus
-                    text="{
-                        path: 'invoice>Status',
-                        formatter: '.formatter.statusText'
-                    }"/>
+            <ColumnListItem vAlign="Middle" press="onPressRow" type="Navigation">
+            				<cells>
+					<ObjectNumber
+						number="{invoiceModel>Quantity}"
+						emphasized="false"/>
+					<ObjectIdentifier title="{invoiceModel>ProductName}" />
+					<Text
+						text="{
+								parts: [
+									'invoiceModel>Status',
+									'i18n>invoiceStatusA',
+									'i18n>invoiceStatusB',
+									'i18n>invoiceStatusC'
+								],
+								formatter: '.formatter.statusText'
+							}"/>
+					<Text text="{invoiceModel>ShipperName}" />
+					<ObjectNumber
+						number="{
+								parts: [
+									'invoiceModel>ExtendedPrice',
+									'view>/currency'
+								],
+								type: 'sap.ui.model.type.Currency',
+								formatOptions: {
+									showMeasure: false
+								}
+							}"
+						unit="{view>/currency}"
+						state="{= ${invoiceModel>ExtendedPrice} > 50 ? 'Error' : 'Success' }"/>
                     <VBox class="action">
                         <Button 
                             tooltip="Edit"
                             icon="sap-icon://edit"
-                            press=".onOpenEditDialog(${invoice>})"/>
+                            press=".onOpenEditDialog(${invoiceModel>})"/>
                         <Button 
                             tooltip="Delete"
                             icon="sap-icon://delete"
-                            press=".onOpenConfirmDialog(${invoice>})"/>
+                            press=".onOpenConfirmDialog(${invoiceModel>})"/>
                     </VBox>
-                </cells>
+				</cells>
             </ColumnListItem>
         </items>
     </Table>

@@ -3,10 +3,19 @@
           xmlns:mvc="sap.ui.core.mvc"
           displayBlock="true">
     <Shell>
-        <App class="myAppDemoWT" id="app">
+        <App class="myAppDemoWT"
+             id="app">
             <pages>
                 <Page title="{i18n>homePageTitle}">
                     <mvc:XMLView viewName="ui5.walkthrough.view.Header" />
+                    <landmarkInfo>
+                        <PageAccessibleLandmarkInfo rootRole="Region"
+                                                    rootLabel="{i18n>Overview_rootLabel}"
+                                                    contentRole="Main"
+                                                    contentLabel="{i18n>Overview_contentLabel}"
+                                                    headerRole="Banner"
+                                                    headerLabel="{i18n>Overview_headerLabel}" />
+                    </landmarkInfo>
                     <content>
                         <mvc:XMLView viewName="ui5.walkthrough.view.Panel" />
                     </content>

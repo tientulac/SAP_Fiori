@@ -1,13 +1,45 @@
 <mvc:View
-	controllerName="ui5.walkthrough.controller.Detail"
-	xmlns="sap.m"
-	xmlns:mvc="sap.ui.core.mvc">
-	<Page
-		title="{i18n>detailPageTitle}">
-		<ObjectHeader
-			intro="{invoice>ShipperName}"
-			title="{invoice>ProductName}"/>
-		<Link text="Go Back"
-            href="../index.html" />
-	</Page>
+    controllerName="ui5.walkthrough.controller.Detail"
+    xmlns="sap.m"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:wt="ui5.walkthrough.control">
+    <Page
+        title="{i18n>detailPageTitle}"
+        showNavButton="true"
+        navButtonPress=".onNavBack">
+        <ObjectHeader
+            responsive="true"
+            fullScreenOptimized="true"
+            number="{
+                parts: [
+                    'invoiceModel>ExtendedPrice',
+                    'view>/currency'
+                ],
+                type: 'sap.ui.model.type.Currency',
+                formatOptions: {
+                    showMeasure: false
+                }
+            }"
+            numberUnit="{view>/currency}"
+            intro="{invoiceModel>ShipperName}"
+            title="{invoiceModel>ProductName}">
+            <attributes>
+                <ObjectAttribute
+                    title="{i18n>quantityTitle}"
+                    text="{invoiceModel>Quantity}"/>
+                <ObjectAttribute
+                    title="{i18n>dateTitle}"
+                    text="{
+                        path: 'invoiceModel>ShippedDate',
+                        type: 'sap.ui.model.type.Date',
+                        formatOptions: {
+                            style: 'long',
+                            source: {
+                            pattern: 'yyyy-MM-ddTHH:mm:ss'
+                            }
+                        }
+                    }"/>
+            </attributes>
+        </ObjectHeader>
+    </Page>
 </mvc:View>

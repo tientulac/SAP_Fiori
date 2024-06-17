@@ -16,7 +16,7 @@
             "version": "1.0.0"
         },
         "dataSources": {
-            "invoiceRemote": {
+            "odataService": {
                 "uri": "V2/Northwind/Northwind.svc/",
                 "type": "OData",
                 "settings": {
@@ -64,8 +64,8 @@
                     "fallbackLocale": ""
                 }
             },
-            "invoice": {
-                "dataSource": "invoiceRemote"
+            "invoiceModel": {
+                "dataSource": "odataService"
             },
             "invoiceJSON": {
                 "type": "sap.ui.model.json.JSONModel",
@@ -83,25 +83,24 @@
             },
             "routes": [
                 {
-                    "pattern": "overview",
+                    "pattern": "",
                     "name": "overview",
                     "target": "overview"
                 },
                 {
-                    "name": "detail",
                     "pattern": "detail/{invoicePath}",
+                    "name": "detail",
                     "target": "detail"
                 }
             ],
             "targets": {
                 "overview": {
                     "id": "overview",
-                    "name": "Overview"
+                    "name": "App"
                 },
                 "detail": {
-                    "id": "detail/{invoicePath}",
-                    "name": "Detail",
-                    "level": 2
+                    "id": "detail",
+                    "name": "Detail"
                 }
             }
         }

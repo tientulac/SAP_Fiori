@@ -4,7 +4,7 @@ import XMLView from "sap/ui/core/mvc/XMLView";
 import JSONModel from "sap/ui/model/json/JSONModel";
 import ResourceModel from "sap/ui/model/resource/ResourceModel";
 import { BaseEntity } from "./model/Base.Entity";
-import Dialog from "sap/m/Dialog";
+import Device from "sap/ui/Device";
 
 /**
 * @namespace ui5.walkthrough
@@ -28,6 +28,10 @@ export default class Component extends UIComponent {
         this.setModel(i18nModel, "i18n");
         this.baseEntity = new BaseEntity(1, 'Test', 2000);
         this.setModel(new JSONModel({ baseEntity: this.baseEntity }));
+         // set device model
+         const deviceModel = new JSONModel(Device);
+         deviceModel.setDefaultBindingMode("OneWay");
+         this.setModel(deviceModel, "device");
         // create the views based on the url/hash
         this.getRouter().initialize();
     };
